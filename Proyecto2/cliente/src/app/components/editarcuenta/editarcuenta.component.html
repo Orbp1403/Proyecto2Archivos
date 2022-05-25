@@ -1,0 +1,36 @@
+<app-encabezado></app-encabezado>
+<div class="form-signin">
+  <div class="btn-group" role="group" aria-label="Opciones">
+    <button type="submit" class="btn btn-secondary" routerLink="/cuenta" aria-pressed="true" data-toggle="button" aria-selected="true">Mostrar Cuenta</button>
+    <button type="submit" class="btn btn-secondary active" routerLink="/editarcuenta" aria-pressed="true" data-toggle="button">Editar Cuenta</button>
+  </div>
+</div>
+<div id="div1">
+  <form id="formulario1" class="form-signin" (submit)="actualizarcuenta()">
+      <div class="mx-auto" style="width: 400px;" id="div2">
+          <h1 class="h3 mb-2 font-weight-normal">Datos de la cuenta</h1>
+      </div>
+      <img src="192.168.1.9:4200/assets/{{foto}}" width="350px" height="350px">
+      <br>
+      <label for="inputNombre">Nombre usuario:</label>
+      <input type="text" id="inputNombre" class="form-control" autocomplete="off" name="nombre" [(ngModel)]="nombre">
+      <label for="inputCorreo">Correo electronico:</label>
+      <input type="text" id="inputCorreo" class="form-control" autocomplete="off" name="correo" [(ngModel)]="correo">
+      <label for="inputTelefono">Telefono:</label>
+      <input type="text" id="inputTelefono" class="form-control" autocomplete="off" name="telefono" [(ngModel)]="telefono">
+      <label for="inputPass">Contraseña</label>
+      <input type="text" id="inputPass" class="form-control" autocomplete="off" name="pass" [(ngModel)]="pass">
+      <br>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="subirarchivos">Subir imagen</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" accept="image/*" name="archivo" [(ngModel)]="archivo" class="custom-file-input" id="subirarchivoimagen" aria-describedby="subirarchivos" (change)="onFileSelected($event)">
+          <label for="subirarchivoimagen" class="custom-file-label" id="lsubirimagen">Escoger foto de perfil</label>
+        </div>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+  </form>
+</div>

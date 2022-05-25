@@ -1,0 +1,12 @@
+<app-encabezado></app-encabezado>
+<div id="divform">
+  <form id="formulario1" class="form-signin" (submit)="guardar($event)">
+    <label for="inputNombre">Nombre Facultad:</label>
+    <input type="text" autocomplete="off" [(ngModel)]="facultad" name="facultad" id="inputNOmbre" class="form-control" placeholder="Nombre facultad" required>
+    <label for="inputDescripcion">Descripcion: </label>
+    <textarea name="descripcion" [(ngModel)]="descripcion" id="inputDescripcion" cols="30" rows="10" placeholder="Descripcion facultad" autocomplete="off" class="form-control"></textarea>
+    <br>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+  </form>
+</div>
+<app-pie></app-pie>

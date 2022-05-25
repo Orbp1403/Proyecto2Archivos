@@ -1,0 +1,67 @@
+<app-encabezado></app-encabezado>
+<div class="container" id="div1">
+  <div *ngIf="tiporeporte==1" id="div2">
+    
+    <form class="form-signin" (submit) = "obtenerretemas()">
+      <div class="input-group mb-3" id="ciencias">
+        <div class="input-group-prepend">
+          <label for="inputCiencias" class="input-group-text">Tema:</label>
+        </div>
+        <select name="rol" id="inputCiencias" [(ngModel)] = "tema" class="custom-select">
+          <option *ngFor = "let c of temas | keyvalue" value="{{c.value['ID_TEMA']}}">{{c.value['NOMBRE_TEMA']}}</option>
+        </select>
+      </div>
+      <button class="btn btn-warning btn-lg btn-block" type="submit"><img src="assets/icons/search-solid.svg" height="25px" width="25px"></button>
+    </form>
+    <div id="reporte">
+        <div class="mx-auto" style="width: 200px;" id="div2">
+            <h1 class="h3 mb-3 font-weight-normal">Top 3 catedraticos con  mas respuestas</h1>
+        </div>
+        <ul class="list-group">
+            <li *ngFor="let mostrar of listamostrar | keyvalue" class="list-group-item">
+              <div class="caja">
+                  <img src="http://192.168.1.9:4200/assets/{{mostrar.value['FOTO']}}" height="100px" width="100px">
+              </div>
+              <div class="caja">
+                  <h2>Nombre del usuario: {{mostrar.value['NOMBRE_USUARIO']}}</h2>
+                  <h2>Numero de respuestas:{{mostrar.value['TOTAL']}}</h2>
+              </div>
+            </li>
+          </ul>
+    </div>
+  </div>
+  <div *ngIf="tiporeporte==2" id="div2">
+      <form class="form-signin" (submit) = "obtenerresus()">
+        <div class="input-group mb-3" id="ciencias">
+          <div class="input-group-prepend">
+            <label for="inputCiencias" class="input-group-text">Tema:</label>
+          </div>
+          <select name="rol" id="inputCiencias" [(ngModel)] = "tema" class="custom-select">
+            <option *ngFor = "let c of temas | keyvalue" value="{{c.value['ID_TEMA']}}">{{c.value['NOMBRE_TEMA']}}</option>
+          </select>
+        </div>
+        <button class="btn btn-warning btn-lg btn-block" type="submit"><img src="assets/icons/search-solid.svg" height="25px" width="25px"></button>
+      </form>
+      <div id="reporte">
+          <div class="mx-auto" style="width: 200px;" id="div2">
+              <h1 class="h3 mb-3 font-weight-normal">Top 3 estudiantes con mas respuestas</h1>
+          </div>
+          <ul class="list-group">
+            <li *ngFor="let mostrar of listamostrar | keyvalue" class="list-group-item">
+              <div class="caja">
+                  <img src="http://192.168.1.9:4200/assets/{{mostrar.value['FOTO']}}" height="100px" width="100px">
+              </div>
+              <div class="caja">
+                  <h2>Nombre del usuario: {{mostrar.value['NOMBRE_USUARIO']}}</h2>
+                  <h2>Numero de respuestas:{{mostrar.value['TOTAL']}}</h2>
+              </div>
+            </li>
+          </ul>
+      </div>
+  </div>
+  <form class="form-signin">
+    <button type="submit" class="btn btn-info btn-lg btn-block" (click)="generarPDF()">
+      <img src="assets/icons/file-download-solid.svg" height="25px" width="25px">
+    </button>
+  </form>
+</div>

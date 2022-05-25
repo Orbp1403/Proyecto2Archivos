@@ -1,0 +1,18 @@
+<div *ngIf="user">
+    <app-encabezado></app-encabezado>
+    <ul id="listatemas" class="list-group">
+      <li *ngFor = "let tema of temas | keyvalue" class="list-group-item">
+        <div class="caja">
+            <img src="http://192.168.1.9:4200/assets/{{tema.value['FOTO']}}" height="45px" width="45px">  
+        </div>
+        <div class="caja">
+            <h3>Nombre tema: {{tema.value['NOMBRE_TEMA']}}</h3>
+            <h6>Creado por: {{tema.value['NOMBRE_USUARIO']}}</h6>
+        </div>
+        <div class="caja1">
+          <button class="btn btn-primary" (click)="datostema(tema)">Mostrar tema</button>
+        </div>
+      </li>
+    </ul>
+</div>
+<app-pie></app-pie>

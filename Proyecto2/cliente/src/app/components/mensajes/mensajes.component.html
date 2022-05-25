@@ -1,0 +1,75 @@
+<app-encabezado></app-encabezado>
+<script>
+  (function(){
+    var chatbox;
+    chatbox = document.querySelector('#msg_history');
+    var boton;
+    boton = document.querySelector('#msg_send_btn');
+
+    boton.addEventListener('click', function(){
+      chatbox.scrollTop = chatbox.scrollHeight;
+    });
+    
+  })();
+</script>
+<div id="divformulario">
+  <form id="formulario"></form>
+</div>
+<div class="container">
+    <h3 class=" text-center">Mensajes</h3>
+    <div class="messaging">
+          <div class="inbox_msg">
+            <div class="inbox_people">
+              <div class="headind_srch">
+                <div class="recent_heading">
+                  <h4>Usuarios activos</h4>
+                </div>
+              </div>
+              <div class="inbox_chat" *ngFor = "let rol of lusuariosactivos | keyvalue">
+                <div class="chat_list" >
+                  <div class="chat_people">
+                    <div class="chat_img"> <img src="192.168.1.9:4200/ssets/{{rol.value['FOTO']}}" class="chat_img"> </div>
+                    <div class="chat_ib">
+                      <h3>{{rol.value['NOMBRE_USUARIO']}}</h3>
+                    </div>
+                  </div>
+                  <form (submit)="verificarcon(rol)">
+                      <button type="submit" class="btn btn-secondary">Mensaje</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="mesgs" *ngIf = "estaenconversacion">
+              <h5>historialm</h5>
+              <div class="msg_history" id="historialm">
+                  <ng-container *ngFor="let m of auxmensajes1">
+                    <div *ngIf="m.tipo == 'e'" class="outgoing_msg">
+                      <div class="sent_msg">
+                          <p>{{m.mensaje}}</p>
+                      </div>
+                    </div>
+                    <div *ngIf="m.tipo=='r'" class="incoming_msg">
+                      <div class="received_msg">
+                        <div class="received_withd_msg">
+                            <p>{{m.mensaje}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+              </div>
+              <div class="type_msg" id="resto" *ngIf="estaenconversacion">
+                  <div class="input_msg_write">
+                    <input type="text" class="write_msg" placeholder="Type a message" *ngIf="estaenconversacion"  [(ngModel)]="message" name="message"/>
+                    <button class="msg_send_btn" type="button" (click)="send()" id="send">
+                      <img src="assets/icons/chevron-right-solid.svg" width="10px" height="10px">
+                    </button>
+                    <form (submit)="dejarconversacion()">
+                        <button class="btn btn-outline-danger btn-lg btn-block" type="submit">Dejar conversacion</button>
+                    </form>
+                  </div>
+                </div>
+            </div>
+            
+          </div>
+          
+        </div></div>

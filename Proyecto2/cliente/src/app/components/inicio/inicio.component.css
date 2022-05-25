@@ -1,0 +1,9 @@
+.caja{
+    float: left;
+    margin-left: 5px;
+}
+
+.caja1{
+    float: right;
+    margin-right: 5px;
+}

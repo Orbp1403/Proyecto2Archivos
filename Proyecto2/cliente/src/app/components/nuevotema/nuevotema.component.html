@@ -1,0 +1,112 @@
+<app-encabezado></app-encabezado>
+
+<div id="div1">
+  <form id="formulario1" class="form-signin">
+      <div class="mx-auto" style="width: 200px;" id="div2">
+          <h1 class="h3 mb-3 font-weight-normal">Crear tema</h1>
+      </div>
+      <br>
+      <label for="inputNombre">Nombre del Tema:</label>
+      <input type="text" id="inputNombre" class="form-control" name="nombre" [(ngModel)]="nombre" autocomplete="off">
+      <label for="inputDescripcion">Descripcion del Tema:</label>
+      <textarea name="descripcion" id="inputDescripcion" cols="50" rows="10" class="form-control" [(ngModel)]="descripcion" autocomplete="off"></textarea>
+      <br>
+      <div class="input-group mb-3" id="ciencias">
+        <div class="input-group-prepend">
+          <label for="inputCiencias" class="input-group-text">Ciencias:</label>
+        </div>
+        <select name="rol" id="inputCiencias" [(ngModel)] = "ciencias" class="custom-select">
+          <option *ngFor = "let c of l_ciencias | keyvalue" value="{{c.value['ID_CIENCIA']}}">{{c.value['NOMBRE_CIENCIA']}}</option>
+        </select>
+        <button class="btn btn-primary" (click)="AgregarCiencia()">Agregar</button>
+      </div>
+      <div class="input-group mb-3" id="carreras">
+        <div class="input-group-prepend">
+          <label for="inputCarreras" class="input-group-text">Carreras:</label>
+        </div>
+        <select name="carrera" id="inputCarreras" [(ngModel)]="carreras" class="custom-select">
+          <option *ngFor="let car of l_carreras | keyvalue" value="{{car.value['ID_CARRERA']}}">{{car.value['NOMBRE_CARRERA']}}</option>
+        </select>
+        <button class="btn btn-primary" (click)="AgregarCarrera()">Agregar</button>
+      </div>
+      <div class="input-group mb-3" id="facultades">
+        <div class="input-group-prepend">
+          <label for="inputFacultades" class="input-group-text">Facultades:</label>
+        </div>
+        <select name="facultades" id="inputFacultades" [(ngModel)]="facultades" class="custom-select">
+          <option *ngFor="let facu of l_facultades | keyvalue" value="{{facu.value['ID_FACULTAD']}}">{{facu.value['NOMBRE_FACULTAD']}}</option>
+        </select>
+        <button class="btn btn-primary" (click)="AgregarFacultad()">Agregar</button>
+      </div>
+      <br>
+      <h5>Ciencias agregadas:</h5>
+      <div class="ex1">
+        <ul class="list-group" id="listaciencias">
+
+        </ul>
+      </div>
+      <br>
+      <div class="input-group mb-3" id="ciencias">
+        <div class="input-group-prepend">
+          <label for="inputCiencias" class="input-group-text">Ciencias:</label>
+        </div>
+        <select name="rol" id="inputCiencias" [(ngModel)] = "cienciase" class="custom-select">
+          <option *ngFor = "let c of l_ciencias | keyvalue" value="{{c.value['ID_CIENCIA']}}">{{c.value['NOMBRE_CIENCIA']}}</option>
+        </select>
+        <button class="btn btn-danger" (click)="EliminarCiencia()"><img src="assets/icons/trash-alt-solid.svg" height="25px" width="25px"></button>
+      </div>
+      <h5>Carrera agregadas:</h5>
+      <div class="ex1">
+        <ul class="list-group" id="listacarreras"></ul>
+      </div>
+      <br>
+      <div class="input-group mb-3" id="carreras">
+        <div class="input-group-prepend">
+          <label for="inputCarreras" class="input-group-text">Carreras:</label>
+        </div>
+        <select name="carrera" id="inputCarreras" [(ngModel)]="carrerase" class="custom-select">
+          <option *ngFor="let car of l_carreras | keyvalue" value="{{car.value['ID_CARRERA']}}">{{car.value['NOMBRE_CARRERA']}}</option>
+        </select>
+        <button class="btn btn-danger" (click)="EliminarCarrera()"><img src="assets/icons/trash-alt-solid.svg" height="25px" width="25px"></button>
+      </div>
+      <h5>Facultades agregadas</h5>
+      <div class="ex1">
+        <ul class="list-group" id="listafacultades"></ul>
+      </div>
+      <br>
+      <div class="input-group mb-3" id="facultades">
+        <div class="input-group-prepend">
+          <label for="inputFacultades" class="input-group-text">Facultades:</label>
+        </div>
+        <select name="facultades" id="inputFacultades" [(ngModel)]="facultadese" class="custom-select">
+          <option *ngFor="let facu of l_facultades | keyvalue" value="{{facu.value['ID_FACULTAD']}}">{{facu.value['NOMBRE_FACULTAD']}}</option>
+        </select>
+        <button class="btn btn-danger" (click)="EliminarFacultad()"><img src="assets/icons/trash-alt-solid.svg" height="25px" width="25px"></button>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="subirarchivos">Subir imagen</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" accept="image/*" name="archivo" [(ngModel)]="archivo" class="custom-file-input" id="subirarchivoimagen" aria-describedby="subirarchivos" (change)="onFileSelected($event)">
+          <label for="subirarchivoimagen" class="custom-file-label" id="lsubirimagen"></label>
+        </div>
+        <button class="btn btn-primary" (click)="guardarimagen()">Guardar</button>
+      </div>
+      <h5>Imagenes agregadas</h5>
+      <div class="ex1">
+        <ul class="list-group" id="listaimagenes"></ul>
+      </div>
+      <div class="input-group mb-3" id="facultades">
+        <div class="input-group-prepend">
+          <label for="inputFacultades" class="input-group-text">Imagenes:</label>
+        </div>
+        <select name="facultades" id="inputFacultades" [(ngModel)]="imagenese" class="custom-select">
+          <option *ngFor="let facu of l_imagenes | keyvalue" value="{{facu.value}}">{{facu.value}}</option>
+        </select>
+        <button class="btn btn-danger" (click)="EliminarImagen()"><img src="assets/icons/trash-alt-solid.svg" height="25px" width="25px"></button>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="creartema()">Guardar</button>
+  </form>
+</div>

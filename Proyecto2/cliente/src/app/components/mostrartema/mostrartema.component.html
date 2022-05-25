@@ -1,0 +1,38 @@
+<app-encabezado></app-encabezado>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <div class="caja">
+        <img src="http://192.168.1.9:4200/assets/{{foto}}" height="100px" width="100px" class="imagen">
+      </div>
+      <h1 class="display-4">{{nombre_tema}}</h1>
+      <p class="lead">{{descripcion}}</p>
+    </div>
+    <div class="caja" *ngIf="!temaabierto && !temaclausurado">
+      <img src="assets/icons/check-circle-solid.svg" height="50px" width="50px">
+    </div>
+    <div class="caja" *ngIf="!temaabierto && !temaclausurado">
+        <p class="lead">El usuario ha cerrado el tema</p>
+    </div>
+    <div class="caja" *ngIf="!temaabierto && temaclausurado">
+        <img src="assets/icons/times-circle-solid.svg" height="50px" width="50px">
+      </div>
+      <div class="caja" *ngIf="!temaabierto && temaclausurado">
+          <p class="lead">Este tema ha sido clausurado</p>
+      </div>
+  </div>
+ <div class="container">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner" id="inner">
+          
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" id="prev">
+          <img src="assets/icons/backward-solid.svg" height="50px" width="50px">
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <img src="assets/icons/forward-solid.svg" height="50px" width="50px">
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+ </div>
+ <app-mostrarrespuesta></app-mostrarrespuesta>
+ <app-crearrespuesta></app-crearrespuesta>

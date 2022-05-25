@@ -1,0 +1,33 @@
+<app-encabezado></app-encabezado>
+<div id="div1">
+  <form id="formulario1" class="form-signin" (submit)="getDatos()">
+      <div class="mx-auto" style="width: 200px;" id="div2">
+          <h1 class="h3 mb-3 font-weight-normal">Registrar Ciencia</h1>
+      </div>
+    <div class="input-group mb-3" id="registros">
+      <div class="input-group-prepend">
+        <label for="inputFacultades" class="input-group-text">Facultad</label>
+      </div>
+      <select name="registro" id="inputFacultades" [(ngModel)]="registros" class="custom-select" (change)="onchange($event.target.value)">
+        <option *ngFor = "let r of l_facultades | keyvalue" value="{{r.value['ID_FACULTAD']}}">{{r.value['NOMBRE_FACULTAD']}}</option>
+      </select>
+    </div>
+
+    <div class="input-group mb-3" id="carrera">
+      <div class="input-group-prepend">
+        <label for="inputCarreras" class="input-group-text">Carrera</label>
+      </div>
+      <select name="registro" id="inputCarrerass" [(ngModel)]="carreras" class="custom-select">
+        <option *ngFor = "let c of l_carreras | keyvalue" value="{{c.value['ID_CARRERA']}}">{{c.value['NOMBRE_CARRERA']}}</option>
+      </select>
+    </div>
+
+    <label for="inputNombre">Nombre de la ciencia:</label>
+    <input type="text" id="inputNombre" name="nombre" [(ngModel)]="nombre" class="form-control" autocomplete="off">
+    <label for="inputDescripcion">Descripcion:</label>
+    <textarea name="descripcion" id="inputDescripcion" cols="30" rows="10" [(ngModel)]="descripcion" class="form-control" autocomplete="off"></textarea>
+    <br>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+  </form>
+</div>
+<app-pie></app-pie>

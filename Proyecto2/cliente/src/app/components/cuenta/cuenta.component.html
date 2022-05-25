@@ -1,0 +1,30 @@
+<app-encabezado></app-encabezado>
+<div class="form-signin">
+  <div class="btn-group" role="group" aria-label="Opciones">
+    <button type="submit" class="btn btn-secondary active" routerLink="/cuenta" aria-pressed="true" data-toggle="button" aria-selected="true">Mostrar Cuenta</button>
+    <button type="submit" class="btn btn-secondary" routerLink="/editarcuenta" aria-pressed="true" data-toggle="button">Editar Cuenta</button>
+  </div>
+</div>
+<div id="div1">
+  <form id="formulario1" class="form-signin">
+      <div class="mx-auto" style="width: 400px;" id="div2">
+          <h1 class="h3 mb-2 font-weight-normal">Datos de la cuenta</h1>
+      </div>
+      <img src="192.168.1.9:4200/assets/{{foto}}" width="350px" height="350px">
+      <br>
+      <label for="inputDocumento">Documento de identificacion:</label>
+      <input type="text" id="inputDocumento" class="form-control" readonly name="documento" [(ngModel)]="documento">
+      <label for="inputRegistro">Registro universitario:</label>
+      <input type="text" id="inputRegistro" class="form-control" readonly name="registro" [(ngModel)]="registro">
+      <label for="inputNombre">Nombre usuario:</label>
+      <input type="text" id="inputNombre" class="form-control" readonly name="nombre" [(ngModel)]="nombre">
+      <label for="inputCorreo">Correo electronico:</label>
+      <input type="text" id="inputCorreo" class="form-control" readonly name="correo" [(ngModel)]="correo">
+      <label for="inputTelefono">Telefono:</label>
+      <input type="text" id="inputTelefono" class="form-control" readonly name="telefono" [(ngModel)]="telefono">
+      <label for="inputCarreras">Carreras a las que pertenece:</label>
+      <textarea name="ccarreras" id="inputCarreras" cols="50" rows="10" readonly class="form-control" [(ngModel)]="ccarreras"></textarea>
+      <label for="inputFacultades">Facultades a las que pertenece:</label>
+      <textarea name="cfacultades" id="inputFacultades" cols="50" rows="10" readonly class="form-control" [(ngModel)]="cfacultades"></textarea>
+  </form>
+</div>

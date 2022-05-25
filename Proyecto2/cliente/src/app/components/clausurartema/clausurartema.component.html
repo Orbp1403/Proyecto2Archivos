@@ -1,0 +1,13 @@
+<app-encabezado></app-encabezado>
+<div id="div1">
+  
+</div>
+<form class="form-signin" (submit)="Clausurar()">
+  <h3>Clausurar tema:</h3>
+  <label for="inputNombre">Nombre tema:</label>
+  <input type="text" class="form-control" autocomplete="off" id="inputNombre" name="nombre" [(ngModel)]="nombre" readonly>
+  <label for="inputDescripcion">Descripcion clausura:</label>
+  <textarea name="descripcion" id="inputDescripcion" cols="30" rows="10" class="form-control" [(ngModel)]="descripcion"></textarea>
+  <br>
+  <button type="submit" class="btn btn-danger btn-lg btn-block">Clausurar</button>
+</form>

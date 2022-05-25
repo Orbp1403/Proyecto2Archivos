@@ -1,0 +1,36 @@
+<form class="form-signin" *ngIf="temaabierto && tipou != 'administrador'">
+  <div>
+    <label for="inputRespuesta">Responder:</label>
+    <textarea name="respuesta" id="inputRespuesta" cols="50" rows="10" class="form-control" [(ngModel)]="respuesta"></textarea>
+  </div>
+  <br>
+  <div class="input-group mb-3" *ngIf="temaabierto">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="subirarchivos">Subir imagen</span>
+      </div>
+      <div class="custom-file">
+        <input type="file" accept="image/*" name="archivo" [(ngModel)]="archivo" class="custom-file-input" id="subirarchivoimagen" aria-describedby="subirarchivos" (change)="onFileSelected($event)">
+        <label for="subirarchivoimagen" class="custom-file-label" id="lsubirimagen"></label>
+      </div>
+      <button class="btn btn-primary" (click)="guardarimagen()">Guardar</button>
+    </div>
+    <h5>Imagenes agregadas</h5>
+    <div class="ex1">
+      <ul class="list-group" id="listaimagenes"></ul>
+    </div>
+    <div class="input-group mb-3" id="facultades">
+      <div class="input-group-prepend">
+        <label for="inputFacultades" class="input-group-text">Imagenes:</label>
+      </div>
+      <select name="facultades" id="inputFacultades" [(ngModel)]="imagenese" class="custom-select">
+        <option *ngFor="let facu of l_imagenes | keyvalue" value="{{facu.value}}">{{facu.value}}</option>
+      </select>
+      <button class="btn btn-danger" (click)="EliminarImagen()"><img src="assets/icons/trash-alt-solid.svg" height="25px" width="25px"></button>
+    </div>
+    <button class="btn btn-primary btn-lg btn-block" (click)="Responder()">Responder</button>
+    <button class="btn btn-info btn-lg btn-block" *ngIf="esusuario" (click)="CerrarTema()">Cerrar Tema</button>
+</form>
+
+<form *ngIf="tipou == 'administrador' && temaabierto && !temaclausurado">
+  <button class="btn btn-danger btn-lg btn-block" (click)="Clausurar()">Clausurar</button>
+</form>

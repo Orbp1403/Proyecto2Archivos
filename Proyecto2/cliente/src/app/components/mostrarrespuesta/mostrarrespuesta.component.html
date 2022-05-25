@@ -1,0 +1,22 @@
+<br>
+<div class="cajarespuestas" *ngIf="hayrespuestas" id="respuestas">
+  <ul class="list-group" id="listarespuestas">
+    <li class="list-group-item" *ngFor="let respuesta of lista_respuestas | keyvalue">
+      <div class="res_img">
+          <img src="http://192.168.1.9:4200/assets/{{respuesta.value['FOTO']}}" class="res_img">
+      </div>
+      <div class="res_ib">
+        <h5>{{respuesta.value['NOMBRE_USUARIO']}}</h5>
+        <p>{{respuesta.value['CONTENIDO_RESPUESTA']}}</p>
+        <ul class="galeria">
+          <li *ngFor="let imagen of respuesta.value['IMAGENES_RESPUESTA'] | keyvalue">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="mostrar(imagen)">
+                  <img src="http://192.168.1.9:4200/assets/{{imagen.value['FOTO_RESPUESTA']}}">
+              </button>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div id="respuestas1"></div>

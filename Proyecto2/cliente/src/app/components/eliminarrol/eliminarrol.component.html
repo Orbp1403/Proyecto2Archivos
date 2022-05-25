@@ -1,0 +1,17 @@
+<app-encabezado></app-encabezado>
+<div id="div1">
+  <form id="formulario1" class="form-signin" (submit)="getDatos()">
+    <div class="input-group mb-3" id="registros">
+      <div class="input-group-prepend">
+        <label for="inputFacultades" class="input-group-text">Roles</label>
+      </div>
+      <select name="registro" id="inputRegistros" [(ngModel)]="registros" class="custom-select">
+        <option *ngFor = "let r of l_registros | keyvalue" value="{{r.value['ID_ROL']}}">{{r.value['NOMBRE_ROL']}}</option>
+      </select>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-danger btn-lg btn-block">
+      <img src="assets/icons/trash-alt-solid.svg" height="25px" width="25px">
+    </button>
+  </form>
+</div>

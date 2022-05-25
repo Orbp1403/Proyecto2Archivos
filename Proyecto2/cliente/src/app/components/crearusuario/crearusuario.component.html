@@ -1,0 +1,75 @@
+<app-encabezado></app-encabezado>
+
+
+<div class="jumbotron jumbotron-fluid" id="div1">
+  <div class="container">
+    <h1 class="display-4"></h1>
+    <p class="lead">Todos los campos mostrados a continuación son obligatorios.</p>
+  </div>
+</div>
+<form class="form-signin" (submit)="Obtenerdatos($event)" id="formulario1">
+  <div class="mx-auto" style="width: 200px;" id="div2">
+      <h1 class="h3 mb-3 font-weight-normal">Registrar usuario</h1>
+  </div>
+  <label for="inputPersonal">Documento personal:</label>
+  <input type="text" autocomplete="off" [(ngModel)]="personal" name="personal" id="inputPersonal" class="form-control" placeholder="Documento personal" required>
+  <label for="inputNombre">Carnet/Registro de personal:</label>
+  <input type="text" autocomplete="off" [(ngModel)]="registro" name="nombre" id="inputNombre" class="form-control" placeholder="Registro" required #referencia1>
+  <label for="inputApellido">Nombre:</label>
+  <input type="text" autocomplete="off" [(ngModel)]="nombre" name="apellido" id="inputApellido" class="form-control" placeholder="Nombre" required #referencia2>
+  <label for="inputPassword">Password:</label>
+  <input type="password" [(ngModel)]="pass" name="pass" id="inputPassword" class="form-control" required>
+  <label for="inputEmail">Correo Electronico:</label>
+  <input type="email" autocomplete="off" [(ngModel)]="correo" name="correo" id="inputEmail" class="form-control" placeholder="Email" required #referencia3>
+  <label for="inputPhone">Telefono:</label>
+  <input type="tel" autocomplete="off" name="tele" [(ngModel)]="tele" id="inputPhone" class="form-control" placeholder="Telefono" required #referencia4>
+  <br>
+  <div class="input-group mb-3" id="tipo" (change)="tipochange($event.target.value)">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputTIpo">Tipo Usuario</label>
+    </div>
+    <select [(ngModel)]="tipou" name="tipou" class="custom-select" id="inputTIpo" #referencia7>
+      <option *ngFor = "let t of l_tipo | keyvalue" value="{{t.value['ID_ROL']}}">{{t.value['NOMBRE_ROL']}}</option>
+    </select>
+  </div>
+  <div class="input-group mb-3" id="facultad" *ngIf="auxtipo && (auxtipo == 2 || auxtipo == 3 || auxtipo == 7)">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputFacultad">Facultad</label>
+    </div>
+    <select [(ngModel)]="facultades" name="facultad" class="custom-select" id="inputFacultad" (change)="onchange($event.target.value)" #referencia7>
+      <option *ngFor = "let f of c_facultades | keyvalue" value="{{f.value['ID_FACULTAD']}}">{{f.value['NOMBRE_FACULTAD']}}</option>
+    </select>
+  </div>
+  <br>
+  <div class="input-group mb-3" id="carrera" *ngIf = "auxtipo && (auxtipo == 2 || auxtipo == 3 || auxtipo == 7)">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputCarrera">Carrera</label>
+    </div>
+    <select [(ngModel)]="carreras" name="carrera" class="custom-select" id="inputCarrera" (change)="seleccionarcarr($event.target.value)">
+      <option *ngFor = "let c of l_carreras | keyvalue" value="{{c.value['ID_CARRERA']}}">{{c.value['NOMBRE_CARRERA']}}</option>
+    </select>
+  </div>
+  <br>
+  <div class="input-group mb-3" id="ciencia" *ngIf="auxtipo && auxtipo == 3">
+    <div class="input-group-prepend">
+      <label for="inputCiencia" class="input-group-text">Ciencia</label>
+    </div>
+    <select name="ciencia" id="inputCiencia" [(ngModel)]="ciencias" class="custom-select">
+      <option *ngFor = "let cie of l_ciencias | keyvalue" value="{{cie.value['ID_CIENCIA']}}">{{cie.value['NOMBRE_CIENCIA']}}</option>
+    </select>
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="subirarchivos">Subir imagen</span>
+    </div>
+    <div class="custom-file">
+      <input type="file" accept="image/*" name="archivo" [(ngModel)]="archivo" class="custom-file-input" id="subirarchivoimagen" aria-describedby="subirarchivos" (change)="onFileSelected($event)">
+      <label for="subirarchivoimagen" class="custom-file-label" id="lsubirimagen">Escoger foto de perfil</label>
+    </div>
+  </div>
+  <br>
+  
+  
+  <button type="submit" class="btn btn-lg btn-primary btn-block" data-toogle="tooltip" data-html="true">Registrarse</button>
+</form>
+<app-pie></app-pie>

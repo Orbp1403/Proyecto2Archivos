@@ -1,0 +1,26 @@
+<app-encabezado></app-encabezado>
+<div id="div1">
+  <form class="form-signin" id="formulario1" (submit)="selectdatos($event)">
+      <div class="mx-auto" style="width: 200px;" id="div2">
+          <h1 class="h3 mb-3 font-weight-normal">Registrar carrera</h1>
+      </div>
+    <label for="inputNombre">Nombre: </label>
+    <input type="text" id="inputNombre" name="nombre" [(ngModel)]="nombre" class="form-control" autocomplete="off">
+    <br>
+    <div class="input-group mb-3" id="registros">
+      <div class="input-group-prepend">
+        <label for="inputFacultades" class="input-group-text">Facultades</label>
+      </div>
+      <select name="registro" id="inputRegistros" [(ngModel)]="registros" class="custom-select">
+        <option *ngFor = "let r of l_facultades | keyvalue" value="{{r.value['ID_FACULTAD']}}">{{r.value['NOMBRE_FACULTAD']}}</option>
+      </select>
+    </div>
+    <br>
+    <label for="inputDescripcion">Descripcion:</label>
+    <textarea name="descripcion" id="inputDescripcion" cols="30" rows="10" [(ngModel)]="descripcion" class="form-control" autocomplete="off"></textarea>
+
+    <br>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+  </form>
+</div>
+<app-pie></app-pie>

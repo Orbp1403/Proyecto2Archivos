@@ -1,0 +1,26 @@
+<app-encabezado></app-encabezado>
+<div id="div1">
+  <form class="form-signin" id="formulario" (submit)="getDatos($event)">
+    <div class="input-group mb-3" id="registros">
+      <div class="input-group-prepend">
+        <label for="inputFacultades" class="input-group-text">Facultades</label>
+      </div>
+      <select name="registro" id="inputRegistros" [(ngModel)]="registros" class="custom-select">
+        <option *ngFor = "let r of l_facultades | keyvalue" value="{{r.value['ID_FACULTAD']}}">{{r.value['NOMBRE_FACULTAD']}}</option>
+      </select>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary btn-lg btn-block"><img src="assets/icons/search-solid.svg" height="25px" width="25px"></button>
+  </form>
+</div>
+<div id="div2">
+  <form class="form-signin" id="formulario1" (submit)="setDatos($event)">
+    <label for="inputApellido">Nombre:</label>
+    <input type="text" autocomplete="off" [(ngModel)]="nombre" name="apellido" id="inputApellido" class="form-control" placeholder="Nombre" readonly>
+    <label for="inputDescripcion">Descripcion:</label>
+    <textarea name="descripcion" id="descripcion" cols="30" rows="10" class="form-control" [(ngModel)]="descripcion" placeholder="Descripcion" readonly></textarea>
+    <br>
+    
+  </form>
+</div>
+<app-pie></app-pie>

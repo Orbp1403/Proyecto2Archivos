@@ -1,0 +1,110 @@
+<div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <form>
+          <img src="assets/images/escudo10.png" width="50" height="50">
+          <a type="submit" class="btn btn-dark" *ngIf="user" routerLink="/inicio">USAC Community</a>
+          <a type="submit" class="btn btn-dark" *ngIf="!user" routerLink="">USAC Community</a>
+      </form>   
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" *ngIf="user">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav" *ngIf = "user && tipo == 'administrador'">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+              <button class="btn btn-dark dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Usuarios
+              </button>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" routerLink="/crear_usuario">Crear usuario</a>
+                <a class="dropdown-item" routerLink="/modificar_usuario">Modificar usuario</a>
+                <a class="dropdown-item" routerLink="/mostrar_usuario">Mostrar usuario</a>
+                <a class="dropdown-item" routerLink="/eliminar_usuario">Eliminar usuario</a>
+              </div>
+            </li>
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Facultades
+          </button>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <a class="dropdown-item" routerLink="/crear_facultad">Crear facultad</a>
+            <a class="dropdown-item" routerLink="/modificar_facultad">Modificar facultad</a>
+            <a class="dropdown-item" routerLink="/mostrar_facultad">Mostrar facultad</a>
+            <a class="dropdown-item" routerLink="/eliminar_facultad">Eliminar facultad</a>
+          </div>
+        </li>  
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Carrera
+          </button>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+            <a class="dropdown-item" routerLink="/crear_carrera">Crear carrera</a>
+            <a class="dropdown-item" routerLink="/modificar_carrera">Modificar carrera</a>
+            <a class="dropdown-item" routerLink="/mostrar_carrera">Mostrar carrera</a>
+            <a class="dropdown-item" routerLink="/eliminar_carrera">Eliminar carrera</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ciencia
+          </button>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+            <a class="dropdown-item" routerLink="/crear_ciencia">Crear ciencia</a>
+            <a class="dropdown-item" routerLink="/modificar_ciencia">Modificar ciencia</a>
+            <a class="dropdown-item" routerLink="/mostrar_ciencia">Mostrar ciencia</a>
+            <a class="dropdown-item" routerLink="/eliminar_ciencia">Eliminar ciencia</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Roles
+          </button>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
+            <a class="dropdown-item" routerLink="/crear_rol">Crear rol</a>
+            <a class="dropdown-item" routerLink="/modificar_rol">Modificar rol</a>
+            <a class="dropdown-item" routerLink="/mostrar_rol">Mostrar rol</a>
+            <a class="dropdown-item" routerLink="/eliminar_rol">Eliminar rol</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <button class="btn btn-dark dropdown-toggle" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Reportes
+            </button>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
+              <a class="dropdown-item" routerLink="/reportes/1">Top 3 catedraticos</a>
+              <a class="dropdown-item" routerLink="/reportes/2">Top 3 estudiantes</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav" *ngIf = "user && tipo != 'administrador' && (tipo == 'estudiante' || tipo == 'catedratico')">
+        <button type="submit" class="btn btn-secondary" routerLink="/mensaje">Mensajes</button>
+        &nbsp;  
+        <button type="submit" class="btn btn-secondary" routerLink="/tema">Crear Tema</button>
+        &nbsp;
+        <form (submit) = "mostrarcuenta()">
+              <button type="submit" class="btn btn-info" *ngIf="user && (tipo == 'estudiante' || tipo == 'catedratico')" data-toggle="tooltip" data-placement="bottom" title="Cuenta">
+                <img src="assets/icons/user-circle-regular.svg" height="25px" width="25px">
+              </button>
+            </form>
+      </div>
+  
+      
+        
+        <form (submit)="cerrarsesion()">
+          <button type="submit" class="btn btn-danger" *ngIf="user" data-toggle="tooltip" data-placement="bottom" title="Cerrar Sesion">
+            <img src="assets/icons/sign-out-alt-solid.svg" height="25px" width="25px">
+          </button>
+        </form> 
+  </nav>
+</div>
+<br>

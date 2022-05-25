@@ -1,0 +1,27 @@
+<app-encabezado></app-encabezado>
+<div id="divformulario">
+  <form class="form-signin" (submit)="log($event)" id="formulario">
+    <div class="mx-auto" style="width: 200px;">
+        <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
+    </div>
+    <label for="inputUsuario">Registro Universitario:</label>
+    <input type="text" [(ngModel)]="nickname" name="nickname" id="inputUsuario" class="form-control" placeholder="Nombre Usuario" required autofocus autocomplete="off">
+    <br>
+    <label for="inputPassword">Contraseña</label>
+    <input type="password" [(ngModel)] = "pass" name="password" id="inputPassword" class="form-control" placeholder="Contraseña" required autocomplete="off">
+    <br>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label for="inputtipo" class="input-group-text">Tipo</label>
+      </div>
+      <select name="tipou" id="inputtipo" [(ngModel)] = "tipo" class="custom-select">
+        <option value="1">Administrador</option>
+        <option value="2">Estudiante</option>
+        <option value="3">Auxiliar</option>
+        <option value="4">Catedratico</option>
+        <option value="5">Trabajador</option>
+      </select>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesion</button>
+  </form>
+</div>

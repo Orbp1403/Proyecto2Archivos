@@ -1,0 +1,80 @@
+import { Component, OnInit } from '@angular/core';
+import { infoCarrera, infoFacultad, infoCiencia } from 'src/app/Facultad';
+import { Router } from '@angular/router';
+import { FacultadesService } from 'src/app/service/facultades.service';
+
+@Component({
+  selector: 'app-eliminarciencia',
+  templateUrl: './eliminarciencia.component.html',
+  styleUrls: ['./eliminarciencia.component.css']
+})
+export class EliminarcienciaComponent implements OnInit {
+
+  l_facultades : infoFacultad[];
+  l_carreras  : infoCarrera[];
+  l_ciencias : infoCiencia[];
+
+  registros = null;
+  carreras = null;
+  ciencias = null;
+
+  nombre = null;
+  descripcion = null;
+
+  constructor(private route : Router, private facultadservice : FacultadesService) { }
+
+  ngOnInit() {
+    if(sessionStorage.length > 0)
+    {
+      this.facultadservice.getTodaslasciencias()
+      .subscribe(facultades1 => {
+        this.l_ciencias = facultades1;
+      })
+    }
+    else{
+      this.route.navigate(['acces_denied'])
+    }
+  }
+
+  onchange(param)
+  {
+    this.facultadservice.getCarrera(param)
+    .subscribe(carreras1 => {
+      this.l_carreras = carreras1;
+    })
+  }
+
+  onchange1(param)
+  {
+    this.facultadservice.getCiencias(param)
+    .subscribe(ciencia1 => {
+      this.l_ciencias = ciencia1;
+    })
+  }
+
+  async delete()
+  {
+    if(this.ciencias)
+    {
+      await this.facultadservice.deleteciencia(this.ciencias).toPromise();
+      await this.facultadservice.deleteasignarcienciacarr(this.ciencias).toPromise();
+      await this.facultadservice.deleterelcienciausuario(this.ciencias).toPromise();
+      this.route.navigate(['inicio']);
+    }
+    else
+    {
+      var auxalerta = document.getElementById('nohaydatos');
+      if(!auxalerta)
+      {
+        var alerta = document.createElement('div');
+        alerta.setAttribute("class", "alert alert-warning alert-dismissible fade show");
+        alerta.setAttribute("role", "alert");
+        alerta.setAttribute("id", "nohaydatos");
+        alerta.innerHTML = "Debe seleccionar una ciencia para eliminar.";
+        alerta.innerHTML += "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>";
+        var padre = document.getElementById('div1');
+        padre.insertBefore(alerta, document.getElementById('formulario1'));
+      }
+    }
+  }
+}

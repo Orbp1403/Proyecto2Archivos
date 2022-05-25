@@ -1,0 +1,25 @@
+<app-encabezado></app-encabezado>
+<div id="div1">
+  <form id="formulario1" class="form-signin" (submit)="getDatos()">
+    <div class="input-group mb-3" id="registros">
+      <div class="input-group-prepend">
+        <label for="inputFacultades" class="input-group-text">Roles</label>
+      </div>
+      <select name="registro" id="inputRegistros" [(ngModel)]="registros" class="custom-select">
+        <option *ngFor = "let r of l_registros | keyvalue" value="{{r.value['ID_ROL']}}">{{r.value['NOMBRE_ROL']}}</option>
+      </select>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-warning btn-lg btn-block">
+      <img src="assets/icons/search-solid.svg" height="25px" width="25px">
+    </button>
+  </form>
+  <form id="formulario2" class="form-signin" (submit)="setDatos()">
+    <label for="inputNombre">Nombre:</label>
+    <input type="text" id="inputNombre" name="nombre" [(ngModel)]="nombre" class="form-control" autocomplete="off">
+    <label for="inputDescripcion">Descripcion:</label>
+    <textarea name="descripcion" id="inputDescripcion" cols="30" rows="10" [(ngModel)]="descripcion" autocomplete="off" class="form-control"></textarea>
+    <br>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+  </form>
+</div>
